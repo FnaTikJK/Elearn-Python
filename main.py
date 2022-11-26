@@ -374,3 +374,4 @@ if (type == "Статистика"):
     report.generate_excel(inputer)
     report.generate_image(inputer, "graph.png")
     report.generate_pdf(inputer, "pdf_template.html", "report.pdf")
+1
