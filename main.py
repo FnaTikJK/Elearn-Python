@@ -358,6 +358,7 @@ class Report:
             ind = ind + 1
         return rules
 
+type = input()
 
 inputer = InputConnect()
 inputer.start_input()
@@ -367,7 +368,9 @@ inputer.count_vacancies(dataset.vacancies_objects)
 inputer.normalize_statistic()
 inputer.print_answer()
 
-report = Report()
-report.generate_excel(inputer)
-report.generate_image(inputer, "graph.png")
-report.generate_pdf(inputer, "pdf_template.html", "report.pdf")
+
+if (type == "Статистика"):
+    report = Report()
+    report.generate_excel(inputer)
+    report.generate_image(inputer, "graph.png")
+    report.generate_pdf(inputer, "pdf_template.html", "report.pdf")
