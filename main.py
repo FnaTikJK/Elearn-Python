@@ -35,15 +35,34 @@ class Vacancy:
 
 
 class DataSet:
+    """
+    Класс представления датасета
+
+    Attributes:
+        file_name: название файла
+        vacancies-objects: список вакансий
+    """
     def __init__(self, file_name: str, vacancies_objects: list):
+        """
+        Конструктор класса
+        """
         self.file_name = file_name
         self.vacancies_objects = vacancies_objects
 
     def cleanhtml(self, raw_html):
+        """
+        чистит строку от html тегов
+        :param raw_html: строка с тегами
+        :return: строку без тегов
+        """
         cleantext = re.sub(re.compile('<.*?>'), '', raw_html)
         return cleantext
 
     def csv_read(self):
+        """
+        считывает csv файл
+        :return: список ванаский
+        """
         list_naming = []
         vacancies = []
         with open(self.file_name, encoding='utf-8-sig') as r_file:
@@ -66,6 +85,12 @@ class DataSet:
         return (vacancies, list_naming)
 
     def csv_filer(self, reader, list_naming):
+        """
+        обрабатывает вакансии
+        :param reader: список вакансий
+        :param list_naming: список названий параметров вакансии
+        :return: обработанный список
+        """
         vacancies = list()
         for row in reader:
             current = {}
@@ -75,11 +100,18 @@ class DataSet:
         return vacancies
 
     def fill_vacancies(self):
+        """
+        Заполняет датасет
+        :return: void
+        """
         (vacancies, list_naiming) = self.csv_read()
         self.vacancies_objects = self.csv_filer(vacancies, list_naiming)
 
 
 class CustomTuple:
+    """
+    кастомный изменяемы кортеж
+    """
     totalSalary = 0
     count = 0
     def __init__(self, totalSalary: int, count: int):
@@ -88,6 +120,13 @@ class CustomTuple:
 
 
 class InputConnect:
+    """
+    Класс считывающий с консоли и получающий данные
+    Attributes:
+        years_stats (CustomTuple): Статистика по годам
+        cities_stats (CustomTuple): Статистика по городам
+        vacancy_stats (CustomTuple): Статистика по нужной вакансии
+    """
     years_stats = {
     }
 
@@ -98,11 +137,20 @@ class InputConnect:
     }
 
     def start_input(self):
+        """
+        Ввод начальных данных
+        :return:
+        """
         self.file_name = input('Введите название файла: ')
         self.profession = input('Введите название профессии: ')
         self.city_count = 0
 
     def count_vacancies(self, vacancies: list):
+        """
+        Заносит вакансии в статистику
+        :param vacancies: список вакансий
+        :return: void
+        """
         for vacancy in vacancies:
             self.city_count += 1
             year = int(vacancy.published_at.year)
@@ -124,6 +172,10 @@ class InputConnect:
                 self.vacancy_stats[year].count += 1
 
     def normalize_statistic(self):
+        """
+        Нормализовать статистику по запрлатам
+        :return: void
+        """
         for year in self.years_stats.keys():
             self.years_stats[year].totalSalary = int(self.years_stats[year].totalSalary // self.years_stats[year].count)
 
@@ -143,6 +195,13 @@ class InputConnect:
                 self.vacancy_stats[year].totalSalary = int(self.vacancy_stats[year].totalSalary // self.vacancy_stats[year].count)
 
     def print_one(self, str_output: str, dict: dict, value_name: str):
+        """
+        Выводит 1 статистику по году или вакансии
+        :param str_output: Название статистики для пользователя
+        :param dict: Источник данных для статистики
+        :param value_name: Название аттрибута который достанем из статистики
+        :return: void
+        """
         flag = False
         print(str_output, end='')
         ind = 0
@@ -159,6 +218,14 @@ class InputConnect:
             print('}')
 
     def print_for_cities(self, str_output: str, dict: dict, names: list, value_name):
+        """
+        Вывод для городов
+        :param str_output: Название для пользователя
+        :param dict: Источник данных
+        :param names: названия городов
+        :param value_name: название аттрибута
+        :return:void
+        """
         flag = False
         print(str_output, end='')
         ind = 0
@@ -175,6 +242,10 @@ class InputConnect:
             print('}')
 
     def print_answer(self):
+        """
+        Вывод ответа в консоль
+        :return: void
+        """
         self.print_one("Динамика уровня зарплат по годам:", self.years_stats, "totalSalary")
         self.print_one("Динамика количества вакансий по годам:", self.years_stats, "count")
 
@@ -191,6 +262,11 @@ class InputConnect:
                               cities_sorted, "count")
 
     def get_sorted_cities(self, attr_name: str):
+        """
+        Получить отсортированные города по параметру
+        :param attr_name: название параметра
+        :return: список сортированный, обрезанный до 10
+        """
         current = {}
         sorted_names = sorted(self.cities_stats, key=lambda x: getattr(self.cities_stats[x], attr_name), reverse=True)
         del sorted_names[10:]
@@ -200,7 +276,15 @@ class InputConnect:
 
 
 class Report:
+    """
+    Класс для создания отчётов
+    """
     def generate_excel(self, inputer: InputConnect):
+        """
+        Создаёт excel со статистикой
+        :param inputer: Хранитель информации
+        :return: void
+        """
         thin_border = Border(left=Side(style='thin'),
                              right=Side(style='thin'),
                              top=Side(style='thin'),
@@ -282,6 +366,12 @@ class Report:
         wb.save("report.xlsx")
 
     def generate_image(self, inputer: InputConnect, filename: str):
+        """
+        Создаёт картинку статистики
+        :param inputer: Хранитель данных
+        :param filename: Название выходной картинки
+        :return: void
+        """
         fig, axis = plt.subplots(2, 2)
         plt.rcParams.update({'font.size': 8})
         self.add_simple_graph(axis[0, 0], inputer.years_stats.keys(),
@@ -305,6 +395,17 @@ class Report:
         plt.savefig(filename)
 
     def add_simple_graph(self, axis, x_val, y_val1, y_val2, name_values1, name_values2, title):
+        """
+        Создаёт обычную диаграмму
+        :param axis: оси
+        :param x_val: значения по x
+        :param y_val1: 1 значения по у
+        :param y_val2: 2 значения по у
+        :param name_values1: название 1 значений
+        :param name_values2: название 2 значений
+        :param title: название графика
+        :return: void
+        """
         axis.set_title(title, fontsize=16)
         axis.grid(axis="y")
         axis.bar([v + 0.2 for v in x_val], y_val2, label=name_values2, width=0.4)
@@ -313,12 +414,28 @@ class Report:
         axis.tick_params(axis="x", labelrotation=90)
 
     def add_horizontal_graph(self, axis, x_val, y_val, title):
+        """
+        Создаёт горизонтальную диаграмму
+        :param axis: оси
+        :param x_val: значения по x
+        :param y_val: значения по у
+        :param title: название графика
+        :return: void
+        """
         axis.set_title(title, fontsize=16)
         axis.grid(axis="x")
         axis.barh(x_val, y_val)
         axis.invert_yaxis()
 
     def add_circle_diagramm(self, axis, names: list, values: list, title):
+        """
+        Создаёт горизонтальную диаграмму
+        :param axis: оси
+        :param names: названия для графика
+        :param values: значения
+        :param title: название графика
+        :return: void
+        """
         axis.set_title(title, fontsize=16)
         names.append("Другие")
         values.append(1 - sum(values))
@@ -326,6 +443,13 @@ class Report:
         plt.axis('equal')
 
     def generate_pdf(self, inputer, template_name: str, filename: str):
+        """
+        Создаёт пдф
+        :param inputer: Хранитель информации
+        :param template_name: назваение для шаблона html
+        :param filename: название выходного пдф
+        :return: void
+        """
         env = Environment(loader=FileSystemLoader('.'))
         template = env.get_template(template_name)
         render_rules = self.get_render_rules(inputer)
@@ -334,6 +458,11 @@ class Report:
         pdfkit.from_string(pdf_template, filename, configuration=config, options={"enable-local-file-access": True})
 
     def get_render_rules(self, inputer):
+        """
+        Создаёт список замен для html шаблона
+        :param inputer: Хранитель данных
+        :return: Список замен для html template
+        """
         rules = {
             'profession': inputer.profession,
             'image_path': path.abspath("graph.png"),
@@ -358,7 +487,6 @@ class Report:
             ind = ind + 1
         return rules
 
-type = input()
 
 inputer = InputConnect()
 inputer.start_input()
@@ -367,7 +495,6 @@ dataset.fill_vacancies()
 inputer.count_vacancies(dataset.vacancies_objects)
 inputer.normalize_statistic()
 inputer.print_answer()
-
 
 if (type == "Статистика"):
     report = Report()
