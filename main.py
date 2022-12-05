@@ -12,6 +12,9 @@ from os import path
 
 
 class Vacancy:
+    """
+    Класс представления вакансии
+    """
     currency_to_rub = {
         "AZN": 35.68,
         "BYR": 23.91,
@@ -26,6 +29,11 @@ class Vacancy:
     }
 
     def __init__(self, object_vacancy):
+        """
+        Инициализация
+        Args:
+            object_vacancy(dict): вакансия в сыром виде
+        """
         self.name = object_vacancy['name']
         salary_from = (int)((float)("".join(object_vacancy['salary_from'].split())))
         salary_to = (int)((float)("".join(object_vacancy['salary_to'].split())))
