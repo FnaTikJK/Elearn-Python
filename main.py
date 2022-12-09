@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from jinja2 import Environment, FileSystemLoader
 import pdfkit
 from os import path
+from unittest import TestCase, main
 
 
 class Vacancy:
@@ -53,7 +54,7 @@ class DataSet:
         """
         Конструктор класса
         >>> DataSet("fileName", list()).file_name
-        "fileName"
+        'fileName'
         """
         self.file_name = file_name
         self.vacancies_objects = vacancies_objects
@@ -64,7 +65,9 @@ class DataSet:
         :param raw_html: строка с тегами
         :return: строку без тегов
         >>> DataSet("", list()).cleanhtml("<tag>text</tag>")
-        "text"
+        'text'
+        >>> DataSet("", list()).cleanhtml("text")
+        'text'
         """
         cleantext = re.sub(re.compile('<.*?>'), '', raw_html)
         return cleantext
@@ -122,9 +125,9 @@ class DataSet:
 class CustomTuple:
     """
     кастомный изменяемы кортеж
-    >>>CustomTuple(10,1).totalSalary
+    >>> CustomTuple(10,1).totalSalary
     10
-    >>>CustomTuple(10,1).count
+    >>> CustomTuple(10,1).count
     1
     """
     totalSalary = 0
@@ -477,9 +480,6 @@ class Report:
         Создаёт список замен для html шаблона
         :param inputer: Хранитель данных
         :return: Список замен для html template
-
-        >>>(self.get_render_rules(inputer))['profession']
-        inputer.profession
         """
         rules = {
             'profession': inputer.profession,
@@ -505,6 +505,25 @@ class Report:
             ind = ind + 1
         return rules
 
+class Tests(TestCase):
+    def DataSet_fileName(self):
+        self.assertEqual(DataSet("fileName", list()).file_name, 'fileName')
+
+    def DataSet_ceanHtml_clean(self):
+        self.assertEqual(DataSet("", list()).cleanhtml("<tag>text</tag>"), 'text')
+
+    def DataSet_ceanHtml_notCleanText(self):
+        self.assertEqual(DataSet("", list()).cleanhtml("text"), 'text')
+
+    def CustomTuple_totalSalary(self):
+        self.assertEqual(CustomTuple(10, 1).totalSalary, 10)
+
+    def CustomTuple_Count(self):
+        self.assertEqual(CustomTuple(10, 1).count, 1)
+
+
+if __name__ == '__main__':
+    main()
 
 inputer = InputConnect()
 inputer.start_input()
