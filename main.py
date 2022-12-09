@@ -40,7 +40,17 @@ class Vacancy:
         salary_to = (int)((float)("".join(object_vacancy['salary_to'].split())))
         self.salary = (salary_from + salary_to) * self.currency_to_rub[object_vacancy['salary_currency']] // 2
         self.area_name = object_vacancy['area_name']
-        self.published_at = datetime.datetime.strptime(object_vacancy['published_at'], '%Y-%m-%dT%H:%M:%S%z')
+        #self.published_at = self.parse_datetime(object_vacancy['published_at'])
+        self.published_at = self.custom_parse(object_vacancy['published_at'])
+
+    def parse_datetime(self, date: str):
+        return datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S%z')
+
+    def custom_parse(self, date: str):
+        ydm = [int(key) for key in (date.split('T')[0]).split('-')]
+        hms = [int(key) for key in (date.split('T')[1]).split('+')[0].split(':')]
+        timezone = int(date[19:22])
+        return datetime.datetime(ydm[0], ydm[1], ydm[2], hms[0], hms[1], hms[2], timezone)
 
 class DataSet:
     """
@@ -525,13 +535,27 @@ class Tests(TestCase):
 if __name__ == '__main__':
     main()
 
+from cProfile import Profile
+from pstats import Stats
+
+
+profile = Profile()
 inputer = InputConnect()
+profile.disable()
 inputer.start_input()
+profile.enable()
 dataset = DataSet(inputer.file_name, list())
 dataset.fill_vacancies()
 inputer.count_vacancies(dataset.vacancies_objects)
 inputer.normalize_statistic()
 inputer.print_answer()
+profile.disable()
+profile.dump_stats('mystats.stats')
+with open('mystats_output.txt', 'wt') as output:
+    stats = Stats('mystats.stats', stream=output)
+    stats.sort_stats('cumulative', 'time')
+    stats.print_stats()
+
 
 if (type == "Статистика"):
     report = Report()
