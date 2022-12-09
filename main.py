@@ -41,7 +41,6 @@ class Vacancy:
         self.area_name = object_vacancy['area_name']
         self.published_at = datetime.datetime.strptime(object_vacancy['published_at'], '%Y-%m-%dT%H:%M:%S%z')
 
-
 class DataSet:
     """
     Класс представления датасета
@@ -53,6 +52,8 @@ class DataSet:
     def __init__(self, file_name: str, vacancies_objects: list):
         """
         Конструктор класса
+        >>> DataSet("fileName", list()).file_name
+        "fileName"
         """
         self.file_name = file_name
         self.vacancies_objects = vacancies_objects
@@ -62,6 +63,8 @@ class DataSet:
         чистит строку от html тегов
         :param raw_html: строка с тегами
         :return: строку без тегов
+        >>> DataSet("", list()).cleanhtml("<tag>text</tag>")
+        "text"
         """
         cleantext = re.sub(re.compile('<.*?>'), '', raw_html)
         return cleantext
@@ -119,6 +122,10 @@ class DataSet:
 class CustomTuple:
     """
     кастомный изменяемы кортеж
+    >>>CustomTuple(10,1).totalSalary
+    10
+    >>>CustomTuple(10,1).count
+    1
     """
     totalSalary = 0
     count = 0
@@ -470,6 +477,9 @@ class Report:
         Создаёт список замен для html шаблона
         :param inputer: Хранитель данных
         :return: Список замен для html template
+
+        >>>(self.get_render_rules(inputer))['profession']
+        inputer.profession
         """
         rules = {
             'profession': inputer.profession,
