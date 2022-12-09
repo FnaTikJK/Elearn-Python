@@ -41,6 +41,7 @@ class Vacancy:
         self.salary = (salary_from + salary_to) * self.currency_to_rub[object_vacancy['salary_currency']] // 2
         self.area_name = object_vacancy['area_name']
         #self.published_at = self.parse_datetime(object_vacancy['published_at'])
+        #self.published_at = self.custom_parse_substr(object_vacancy['published_at'])
         self.published_at = self.custom_parse(object_vacancy['published_at'])
 
     def parse_datetime(self, date: str):
@@ -51,6 +52,10 @@ class Vacancy:
         hms = [int(key) for key in (date.split('T')[1]).split('+')[0].split(':')]
         timezone = int(date[19:22])
         return datetime.datetime(ydm[0], ydm[1], ydm[2], hms[0], hms[1], hms[2], timezone)
+
+    def custom_parse_substr(self, date: str):
+        return datetime.datetime(int(date[0:4]), int(date[5:7]), int(date[8:10]), int(date[11:13]),
+                                 int(date[14:16]), int(date[17:19]), int(date[19:22]))
 
 class DataSet:
     """
