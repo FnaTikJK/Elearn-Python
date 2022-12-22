@@ -17,3 +17,23 @@
 ![2022-12-09_19-20-08](https://user-images.githubusercontent.com/70794890/206723221-6661af00-3fde-4dee-b56a-29d31928dd09.png)
 
 В итоге получил увеличение скорости в 5 раз
+
+
+Разделённые CSV-файлы
+
+[2007.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199206/2007.csv)
+[2008.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199207/2008.csv)
+[2009.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199208/2009.csv)
+[2010.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199210/2010.csv)
+[2011.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199211/2011.csv)
+[2012.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199212/2012.csv)
+[2013.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199213/2013.csv)
+[2014.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199214/2014.csv)
+[2015.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199215/2015.csv)
+[2016.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199217/2016.csv)
+[2017.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199218/2017.csv)
+[2018.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199219/2018.csv)
+[2019.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199220/2019.csv)
+[2020.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199223/2020.csv)
+[2021.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199225/2021.csv)
+[2022.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199226/2022.csv)
