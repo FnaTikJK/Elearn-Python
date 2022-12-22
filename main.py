@@ -174,7 +174,7 @@ class InputConnect:
         Ввод начальных данных
         :return:
         """
-        self.file_name = input('Введите название файла: ')
+        self.folder_name = input('Введите название файла: ')
         self.profession = input('Введите название профессии: ')
         self.city_count = 0
 
@@ -537,21 +537,29 @@ class Tests(TestCase):
         self.assertEqual(CustomTuple(10, 1).count, 1)
 
 
+def multiprocc(file_name: str, inputer: InputConnect):
+    dataset = DataSet(file_name, list())
+    dataset.fill_vacancies()
+    inputer.count_vacancies(dataset.vacancies_objects)
+
+
 if __name__ == '__main__':
     main()
 
+from multiprocessing import Process
 from cProfile import Profile
 from pstats import Stats
-
+from os import listdir
 
 profile = Profile()
 inputer = InputConnect()
 profile.disable()
 inputer.start_input()
 profile.enable()
-dataset = DataSet(inputer.file_name, list())
-dataset.fill_vacancies()
-inputer.count_vacancies(dataset.vacancies_objects)
+if __name__ == '__main__':
+    p = Process(target=multiprocc, args=(listdir(f'./{inputer.folder_name}'),inputer))
+    p.start()
+    p.join()
 inputer.normalize_statistic()
 inputer.print_answer()
 profile.disable()
