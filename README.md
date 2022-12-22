@@ -37,3 +37,12 @@
 [2020.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199223/2020.csv)
 [2021.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199225/2021.csv)
 [2022.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199226/2022.csv)
+
+
+Многопроцессорность
+До 
+![image](https://user-images.githubusercontent.com/70794890/209063870-b8bf4d59-debb-4a46-b904-a28beaee338e.png)
+
+После 
+![image](https://user-images.githubusercontent.com/70794890/209063920-291810c9-3348-44d9-8bc5-88bfc2c5b058.png)
+
