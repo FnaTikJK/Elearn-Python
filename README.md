@@ -39,10 +39,27 @@
 [2022.csv](https://github.com/FnaTikJK/Elearn-Python/files/10199226/2022.csv)
 
 
-Многопроцессорность
-До 
+#Многопроцессорность
+До
+
 ![image](https://user-images.githubusercontent.com/70794890/209063870-b8bf4d59-debb-4a46-b904-a28beaee338e.png)
 
 После 
+
 ![image](https://user-images.githubusercontent.com/70794890/209063920-291810c9-3348-44d9-8bc5-88bfc2c5b058.png)
 
+
+#Concurrent futures
+Без многопроцессорности
+
+![image](https://user-images.githubusercontent.com/70794890/209063870-b8bf4d59-debb-4a46-b904-a28beaee338e.png)
+
+Multiprocessing 
+
+![image](https://user-images.githubusercontent.com/70794890/209063920-291810c9-3348-44d9-8bc5-88bfc2c5b058.png)
+
+Concurrent futures
+
+![image](https://user-images.githubusercontent.com/70794890/209064574-a6d3dc5e-bbe9-46ba-b182-d2e47aeb5204.png)
+
+Concurrent futures сработал хуже multiproc => оставил решение с multiproc
