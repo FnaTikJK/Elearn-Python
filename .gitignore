@@ -1,6 +1,7 @@
-venv/
-report/
-__pycache__/
+
 .idea/
-.git/
 *.csv
+venv
+.png
+.pdf
+.xlsx
