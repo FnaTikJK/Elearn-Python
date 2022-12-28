@@ -6,3 +6,4 @@ venv
 .pdf
 .xlsx
 !hh_unloading.csv
+!sample_vacancies.csv
