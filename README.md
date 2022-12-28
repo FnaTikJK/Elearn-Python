@@ -67,3 +67,20 @@ Concurrent futures сработал хуже multiproc => оставил реш�
 
  # Частотность валют
  ![image](https://user-images.githubusercontent.com/70794890/209881712-c4a1e161-db10-45c9-86a5-fc6c72298ed5.png)
+
+
+# task 3.5.2
+![image](https://user-images.githubusercontent.com/70794890/209882709-2a6f9d4f-dcb8-4ad8-8d81-0baac5e5cd28.png)
+
+# task 3.5.3
+![image](https://user-images.githubusercontent.com/70794890/209882736-2d85747c-cab7-4329-8d80-a758cfd7aec4.png)
+
+![image](https://user-images.githubusercontent.com/70794890/209882767-bdd48f71-1226-43a5-8b77-888b03a51cd7.png)
+
+![image](https://user-images.githubusercontent.com/70794890/209882784-eab75f24-3a41-4ba9-b489-0de3f8eb2e8a.png)
+
+![image](https://user-images.githubusercontent.com/70794890/209882800-9a81a0f8-ca61-4c02-b465-f44a69921e8c.png)
+
+![image](https://user-images.githubusercontent.com/70794890/209882827-eeebf489-f663-4dfa-96df-3dbc8d037efe.png)
+
+![image](https://user-images.githubusercontent.com/70794890/209882857-268fa060-8858-4cc4-b7fe-43b05e89310a.png)
