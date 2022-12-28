@@ -69,8 +69,36 @@ Concurrent futures сработал хуже multiproc => оставил реш�
  ![image](https://user-images.githubusercontent.com/70794890/209881712-c4a1e161-db10-45c9-86a5-fc6c72298ed5.png)
 
 
+# task 3.3.2
+![image](https://user-images.githubusercontent.com/70794890/209883214-21d6726a-58db-4307-bd11-da82f3e209ab.png)
+![image](https://user-images.githubusercontent.com/70794890/209883230-3fda5016-684c-4088-af00-cec16fbf5597.png)
+
+
+# task 3.3.3
+
+Начало файла 
+
+![image](https://user-images.githubusercontent.com/70794890/209883374-9f256eb1-6ebd-421d-a3d9-b9a50b01acb7.png)
+
+Конец файла 
+
+![image](https://user-images.githubusercontent.com/70794890/209883383-0cd8a571-012f-43c2-bccd-48f7b829b8d6.png)
+
+# task 3.4.1
+[first100_vacancies.csv](https://github.com/FnaTikJK/Elearn-Python/files/10316851/first100_vacancies.csv)
+
+# task 3.4.2
+[cut_report.pdf](https://github.com/FnaTikJK/Elearn-Python/files/10316877/cut_report.pdf)
+
+# task 3.4.3
+[town_report.pdf](https://github.com/FnaTikJK/Elearn-Python/files/10316886/town_report.pdf)
+
+# task 3.5.1
+![image](https://user-images.githubusercontent.com/70794890/209884383-f770b6d0-1249-4a12-a968-ca8a37df69dd.png)
+
 # task 3.5.2
-![image](https://user-images.githubusercontent.com/70794890/209882709-2a6f9d4f-dcb8-4ad8-8d81-0baac5e5cd28.png)
+![1](https://user-images.githubusercontent.com/70794890/209884784-9a98bce4-a7b9-4ad4-9038-4f8b295b6d24.png)
+
 
 # task 3.5.3
 ![image](https://user-images.githubusercontent.com/70794890/209882736-2d85747c-cab7-4329-8d80-a758cfd7aec4.png)
@@ -83,4 +111,5 @@ Concurrent futures сработал хуже multiproc => оставил реш�
 
 ![image](https://user-images.githubusercontent.com/70794890/209882827-eeebf489-f663-4dfa-96df-3dbc8d037efe.png)
 
-![image](https://user-images.githubusercontent.com/70794890/209882857-268fa060-8858-4cc4-b7fe-43b05e89310a.png)
+![1](https://user-images.githubusercontent.com/70794890/209885045-acbbd1fb-5009-42f3-a301-ef5cd5783587.png)
+
